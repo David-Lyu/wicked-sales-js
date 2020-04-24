@@ -1,0 +1,21 @@
+
+  @media (max-width: 1000px) {
+    .card {
+      max-width:100%;
+      flex: 100%  }
+  }
+
+  @media (min-width:1000px) {
+    img{
+      object-fit: contain;
+      height: 60%
+    }
+  }
+
+  header > i {
+    margin-right: 10px;
+  }
+
+.card {
+  margin: 20px 5px 0
+}
