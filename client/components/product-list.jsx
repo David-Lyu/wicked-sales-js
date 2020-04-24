@@ -26,7 +26,7 @@ export default class ProductList extends React.Component {
         <div className="row col-12 space-cards justify-content-center">
           {this.state.products.length ? this.state.products.map(product => {
             return (
-              <ProductListItem key={product.productId} product={product}/>
+              <ProductListItem key={product.productId} product={product} handleClick={this.props.setView}/>
             );
           }) : null}
         </div>

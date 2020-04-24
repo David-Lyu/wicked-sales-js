@@ -13,7 +13,7 @@ export default function ProductListItem(props) {
     }
   }
   return (
-    <div className="card col-3">
+    <div className="card col-3" onClick={() => { props.handleClick('details', props.product.productId); }}>
       <img src={props.product.image} className="card-img-top" alt={`picture of ${props.product.name}`}/>
       < div className = "card-body">
         <h5 className="card-title">{props.product.name}</h5>
