@@ -24,7 +24,11 @@ export default class ProductList extends React.Component {
     return (
       <div className="row">
         <div className="row col-12 space-cards justify-content-center">
-          <ProductListItem products={this.state.products}/>
+          {this.state.products.length ? this.state.products.map(product => {
+            return (
+              <ProductListItem key={product.productId} product={product}/>
+            );
+          }) : null}
         </div>
       </div>
     );
