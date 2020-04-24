@@ -43,8 +43,9 @@ app.get('/api/products/:id', (req, res, next) => {
     .then(results => {
       if (results.rows.length === 0) {
         next(new ClientError(`cannot find id of ${req.params.id}`, 404));
+      } else {
+        res.json(results.rows[0]);
       }
-      res.json(results.rows[0]);
     })
     .catch(err => next(err));
 });
