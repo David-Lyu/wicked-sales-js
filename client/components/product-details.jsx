@@ -4,6 +4,7 @@ export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.handleClickDetails = this.handleClickDetails.bind(this);
+    this.handleClickAddToCart = this.handleClickAddToCart.bind(this);
     this.state = {
       product: null
     };
@@ -11,6 +12,10 @@ export default class ProductDetails extends React.Component {
 
   handleClickDetails(e) {
     this.props.setView('catalog', {});
+  }
+
+  handleClickAddToCart(e) {
+    this.props.addToCart(this.state.product);
   }
 
   componentDidMount() {
@@ -40,6 +45,7 @@ export default class ProductDetails extends React.Component {
                     {'$' + price.slice(0, -2) + '.' + price.slice(-2)}
                   </h6>
                   <p className="card-text">{product.shortDescription}</p>
+                  <button onClick={this.handleClickAddToCart} className="btn btn-primary">Add to Cart</button>
                 </div>
               </div>
             </div>
