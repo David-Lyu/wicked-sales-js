@@ -51,11 +51,9 @@ app.get('/api/products/:id', (req, res, next) => {
 });
 
 app.get('/api/cart', (req, res, next) => {
-  if (!req.session) {
+  if (!req.session.cartId) {
     return (
-      res.status(400).json({
-        error: 'cart is empty'
-      })
+      res.status(200).json([])
     );
   }
   const parameterizedArray = [req.session.cartId];
@@ -90,17 +88,16 @@ app.post('/api/cart', (req, res, next) => {
   db.query(sql1, parameterizedArray)
     .then(results => {
       if (!results.rows.length) {
-        return next(new ClientError(`cannot find id at ${productId}`), 400);
+        next(new ClientError(`cannot find id at ${productId}`), 400);
+        process.exit(1);
       } else {
 
         let sql2 = null;
-        let parameterizedArrayTruthy = null;
         if (req.session.cartId) {
-          sql2 = `
-              select "cartId"
-                from "carts"
-              where "cartId" = $1;`;
-          parameterizedArrayTruthy = [req.session.cartId];
+          return ({
+            cartId: req.session.cartId,
+            price: results.rows[0].price
+          });
         } else {
           sql2 = `
               insert into "carts" ("cartId","createdAt")
@@ -109,7 +106,7 @@ app.post('/api/cart', (req, res, next) => {
         }
 
         return (
-          db.query(sql2, parameterizedArrayTruthy)
+          db.query(sql2)
             .then(data => {
               return {
                 cartId: data.rows[0].cartId,
@@ -146,10 +143,13 @@ app.post('/api/cart', (req, res, next) => {
           from "cartItems" as "c"
           join "products" as "p" using ("productId")
         where "c"."cartItemId" = $1`;
-      db.query(sql4, parameterizedArray3)
-        .then(data => {
-          res.status(201).json(data.rows[0]);
-        });
+
+      return (
+        db.query(sql4, parameterizedArray3)
+          .then(data => {
+            res.status(201).json(data.rows[0]);
+          })
+      );
     })
     .catch(err => next(err));
 });
