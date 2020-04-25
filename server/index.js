@@ -81,6 +81,7 @@ app.post('/api/cart', (req, res, next) => {
       error: 'please input a valid product Id'
     });
   }
+
   const parameterizedArray = [productId];
   const sql1 = `
   select "price"
@@ -91,6 +92,7 @@ app.post('/api/cart', (req, res, next) => {
       if (!results.rows.length) {
         return next(new ClientError(`cannot find id at ${productId}`), 400);
       } else {
+
         let sql2 = null;
         let parameterizedArrayTruthy = null;
         if (req.session.cartId) {
@@ -105,6 +107,7 @@ app.post('/api/cart', (req, res, next) => {
                 values (default,default)
               returning "cartId";`;
         }
+
         return (
           db.query(sql2, parameterizedArrayTruthy)
             .then(data => {
@@ -123,6 +126,7 @@ app.post('/api/cart', (req, res, next) => {
       insert into "cartItems" ("cartId", "productId", "price")
         values($1, $2, $3)
       returning "cartItemId"`;
+
       return (
         db.query(sql3, parametrizedArray2)
           .then(data => {
