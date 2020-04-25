@@ -4,19 +4,21 @@ import CartSummaryItem from './cart-summary-item';
 export default function CartSummary(props) {
   if (props.cart.length) {
     let itemTotal = 0;
-    const GetAllCartItems = props.cart.map(cartItem => {
-      itemTotal += props.price;
-      return <CartSummaryItem key={props.productId} cartItem={cartItem}/>;
+    const getAllCartItems = props.cart.map(cartItem => {
+      itemTotal += parseInt(cartItem.price);
+      return <CartSummaryItem key={cartItem.cartItemId} cartItem={cartItem}/>;
     });
+    itemTotal = itemTotal.toString();
+    itemTotal = '$' + itemTotal.slice(0, -2) + '.' + itemTotal.slice(-2);
     return (
       <div>
         <nav className="nav nav-tabs">
-          <button className="nav-item nav-link text-muted" onClick={() => { this.props.handleClickDetails('catalog', {}); }}>
+          <button className="nav-item nav-link text-muted" onClick={() => { props.setView('catalog', {}); }}>
             {'< back to catalog'}
           </button>
         </nav>
         <h1>My Cart</h1>
-        <GetAllCartItems/>
+        {getAllCartItems}
         <h1>Item Total: {itemTotal}</h1>
       </div>
     );
