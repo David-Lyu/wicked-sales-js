@@ -19,10 +19,22 @@ export default function CartSummary(props) {
         </nav>
         <h1>My Cart</h1>
         {getAllCartItems}
-        <h1>Item Total: {itemTotal}</h1>
+        <div className="d-flex justify-content-between">
+          <h3>Item Total: {itemTotal}</h3>
+          <button onClick={() => { props.setView('order', {}); }} className="btn btn-primary btn-sm">Checkout</button>
+        </div>
       </div>
     );
   } else {
-    return <div>Cart is Empty</div>;
+    return (
+      <>
+        <nav className="nav nav-tabs">
+          <button className="nav-item nav-link text-muted" onClick={() => { props.setView('catalog', {}); }}>
+            {'< back to catalog'}
+          </button>
+        </nav>
+        <div>Cart is Empty</div>
+      </>
+    );
   }
 }
