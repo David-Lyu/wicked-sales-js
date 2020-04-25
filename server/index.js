@@ -51,17 +51,32 @@ app.get('/api/products/:id', (req, res, next) => {
 });
 
 app.get('/api/cart', (req, res, next) => {
+  if (!req.session) {
+    return (
+      res.status(400).json({
+        error: 'cart is empty'
+      })
+    );
+  }
+  const parameterizedArray = [req.session.cartId];
   const sql = `
-  select *
-    from "carts";`;
-  db.query(sql)
-    .then(results => process.stdout.write(results.rows))
+  select  "c"."cartItemId",
+          "p"."image",
+          "p"."name",
+          "p"."price",
+          "p"."productId",
+          "p"."shortDescription"
+    from "cartItems" as "c"
+    join "products" as "p" using ("productId")
+  where "cartId" = $1;`;
+  db.query(sql, parameterizedArray)
+    .then(results => res.status(200).json(results.rows))
     .catch(err => next(err));
 });
 
 app.post('/api/cart', (req, res, next) => {
-  const productId = req.body.productId;
-  if (productId <= 0) {
+  const productId = parseInt(req.body.productId);
+  if (productId <= 0 || !productId) {
     return res.status(400).json({
       error: 'please input a valid product Id'
     });
@@ -76,16 +91,63 @@ app.post('/api/cart', (req, res, next) => {
       if (!results.rows.length) {
         return next(new ClientError(`cannot find id at ${productId}`), 400);
       } else {
-        const innerSql = `
-          insert into "carts" ("cartId","createdAt")
-            values (default,default)
-          returning "cartId";`;
-        process.stdout.write(innerSql);
-        return db.query(innerSql);
+        let sql2 = null;
+        let parameterizedArrayTruthy = null;
+        if (req.session.cartId) {
+          sql2 = `
+              select "cartId"
+                from "carts"
+              where "cartId" = $1;`;
+          parameterizedArrayTruthy = [req.session.cartId];
+        } else {
+          sql2 = `
+              insert into "carts" ("cartId","createdAt")
+                values (default,default)
+              returning "cartId";`;
+        }
+        return (
+          db.query(sql2, parameterizedArrayTruthy)
+            .then(data => {
+              return {
+                cartId: data.rows[0].cartId,
+                price: results.rows[0].price
+              };
+            })
+        );
       }
     })
-    .then(data => process.stdout.write(data.rows));
-  // .catch(err => next(err));
+    .then(results => {
+      req.session.cartId = results.cartId;
+      const parametrizedArray2 = [results.cartId, productId, results.price];
+      const sql3 = `
+      insert into "cartItems" ("cartId", "productId", "price")
+        values($1, $2, $3)
+      returning "cartItemId"`;
+      return (
+        db.query(sql3, parametrizedArray2)
+          .then(data => {
+            return data.rows[0].cartItemId;
+          })
+      );
+    })
+    .then(results => {
+      const parameterizedArray3 = [results];
+      const sql4 = `
+        select "c"."cartItemId",
+                "c"."price",
+                "p"."productId",
+                "p"."image",
+                "p"."name",
+                "p"."shortDescription"
+          from "cartItems" as "c"
+          join "products" as "p" using ("productId")
+        where "c"."cartItemId" = $1`;
+      db.query(sql4, parameterizedArray3)
+        .then(data => {
+          res.status(201).json(data.rows[0]);
+        });
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
