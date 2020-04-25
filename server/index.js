@@ -50,6 +50,44 @@ app.get('/api/products/:id', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/cart', (req, res, next) => {
+  const sql = `
+  select *
+    from "carts";`;
+  db.query(sql)
+    .then(results => process.stdout.write(results.rows))
+    .catch(err => next(err));
+});
+
+app.post('/api/cart', (req, res, next) => {
+  const productId = req.body.productId;
+  if (productId <= 0) {
+    return res.status(400).json({
+      error: 'please input a valid product Id'
+    });
+  }
+  const parameterizedArray = [productId];
+  const sql1 = `
+  select "price"
+    from "products"
+    where "productId" = $1;`;
+  db.query(sql1, parameterizedArray)
+    .then(results => {
+      if (!results.rows.length) {
+        return next(new ClientError(`cannot find id at ${productId}`), 400);
+      } else {
+        const innerSql = `
+          insert into "carts" ("cartId","createdAt")
+            values (default,default)
+          returning "cartId";`;
+        process.stdout.write(innerSql);
+        return db.query(innerSql);
+      }
+    })
+    .then(data => process.stdout.write(data.rows));
+  // .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
