@@ -1,4 +1,14 @@
 
+  @media (max-width: 576px) {
+    header > h1 {
+      max-width: 80%;
+    }
+    header {
+      justify-content: center;
+    }
+  }
+
+
   @media (max-width: 1000px) {
     .card {
       max-width:100%;
@@ -15,8 +25,9 @@
   header {
     margin-bottom: 20px;
   }
-  header > i {
+  header i {
     margin-right: 10px;
+    margin-left: 10px
   }
 
 .card {
