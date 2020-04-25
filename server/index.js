@@ -88,8 +88,7 @@ app.post('/api/cart', (req, res, next) => {
   db.query(sql1, parameterizedArray)
     .then(results => {
       if (!results.rows.length) {
-        next(new ClientError(`cannot find id at ${productId}`), 400);
-        process.exit(1);
+        throw next(new ClientError(`cannot find id at ${productId}`), 400);
       } else {
 
         let sql2 = null;
