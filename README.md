@@ -17,5 +17,5 @@ Try the application live at [https://wicked-sales.davidlyu.com](https://wicked-s
 * AWS EC2
 
 ## Features
-  -User can view items
+  - User can view items
   -
