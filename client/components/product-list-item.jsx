@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function ProductListItem(props) {
+  const [hoverClass, setHoverClass] = useState('');
   let formatPrice = '$';
   const stringPrice = props.product.price.toString();
   for (let i = 0; i < stringPrice.length; i++) {
@@ -13,7 +14,10 @@ export default function ProductListItem(props) {
     }
   }
   return (
-    <div className="card col-3 pointer" onClick={() => { props.setView('details', props.product.productId); }}>
+    <div className={`card mb-3 col-3 pointer px-0 mx-2 overflow-hidden ${hoverClass}`}
+      onMouseLeave={() => setHoverClass('')}
+      onMouseEnter={() => setHoverClass('on-hover')}
+      onClick={() => { props.setView('details', props.product.productId); }}>
       <img src={props.product.image} className="card-img-top" alt={`picture of ${props.product.name}`}/>
       < div className = "card-body">
         <h5 className="card-title">{props.product.name}</h5>

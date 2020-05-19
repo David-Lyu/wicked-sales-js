@@ -57,24 +57,24 @@ export default class CheckoutForm extends React.Component {
     totalCost = totalCost.toString();
     totalCost = '$' + totalCost.slice(0, -2) + '.' + totalCost.slice(-2);
     return (
-      <div>
-        <h1 className="row">My Cart</h1>
-        <h6 className="row text-muted">Order Total: {totalCost}</h6>
-        <form onSubmit={this.handleSubmit}>
+      <div className="container">
+        <h1 className="">My Cart</h1>
+        <h6 className=" text-muted">Order Total: {totalCost}</h6>
+        <form className="container" onSubmit={this.handleSubmit}>
           <label className="form-group row">
             Name
-            <input onChange={this.handleNameChange} type="text" value={this.state.userName}
+            <input onChange={this.handleNameChange} required type="text" value={this.state.userName}
               className="form-control"/>
           </label>
           <label className="form-group row">
             Credit Card
             <input onChange={this.handleCreditCardChange} type="number"
-              value={this.state.creditCard} className="form-control"/>
+              value={this.state.creditCard} required className="form-control"/>
           </label>
           <label className="form-group row">
             Shipping Address
             <textarea onChange={this.handleShippingAddressChange}
-              value={this.state.shippingAddress} cols="3" rows="3" className="form-control"/>
+              value={this.state.shippingAddress} cols="3" required rows="3" className="form-control"/>
           </label>
           <div className="d-flex justify-content-between align-items-end">
             <p onClick={this.handleClick} className="pointer text-muted">
