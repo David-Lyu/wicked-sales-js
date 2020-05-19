@@ -22,7 +22,7 @@ export default class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row mx-auto">
         <div className="row space-cards justify-content-center">
           {this.state.products.length ? this.state.products.map(product => {
             return (

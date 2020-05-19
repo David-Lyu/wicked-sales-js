@@ -4,7 +4,7 @@
       max-width: 80%;
     }
     header {
-      justify-content: center;
+      justify-content: flex-end;
     }
   }
 
