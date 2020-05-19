@@ -57,10 +57,10 @@ export default class CheckoutForm extends React.Component {
     totalCost = totalCost.toString();
     totalCost = '$' + totalCost.slice(0, -2) + '.' + totalCost.slice(-2);
     return (
-      <div className="container">
-        <h1 className="row">My Cart</h1>
-        <h6 className="row text-muted">Order Total: {totalCost}</h6>
-        <form onSubmit={this.handleSubmit}>
+      <div className="container ml-3">
+        <h1 className="">My Cart</h1>
+        <h6 className=" text-muted">Order Total: {totalCost}</h6>
+        <form className="container" onSubmit={this.handleSubmit}>
           <label className="form-group row">
             Name
             <input onChange={this.handleNameChange} required type="text" value={this.state.userName}
