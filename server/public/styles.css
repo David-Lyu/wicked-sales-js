@@ -37,3 +37,8 @@
 .pointer {
   cursor: pointer;
 }
+
+.on-hover {
+  border: 1px blue solid;
+  color: blue;
+}
