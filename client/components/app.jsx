@@ -82,7 +82,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Header setView={this.setView} cartItemCount={this.state.cart.length}/>
         { (this.state.view.name === 'catalog' && <ProductList setView={this.setView}/>) ||
         (this.state.view.name === 'details' && <ProductDetails setView={this.setView}
