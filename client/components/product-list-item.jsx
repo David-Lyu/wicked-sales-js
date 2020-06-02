@@ -14,7 +14,7 @@ export default function ProductListItem(props) {
     }
   }
   return (
-    <div className={`card mb-3 col-3 pointer px-0 mx-2 overflow-hidden ${hoverClass}`}
+    <div className={`card mb-3 col-sm-3 pointer px-0 mx-2 ${hoverClass}`}
       onMouseLeave={() => setHoverClass('')}
       onMouseEnter={() => setHoverClass('on-hover')}
       onClick={() => { props.setView('details', props.product.productId); }}>
