@@ -6,7 +6,7 @@ export default function CartSummary(props) {
     let itemTotal = 0;
     const getAllCartItems = props.cart.map(cartItem => {
       itemTotal += parseInt(cartItem.price);
-      return <CartSummaryItem key={cartItem.cartItemId} cartItem={cartItem}/>;
+      return <CartSummaryItem key={cartItem.cartItemId} deleteCartItem={props.deleteCartItem} cartItem={cartItem}/>;
     });
     itemTotal = itemTotal.toString();
     itemTotal = '$' + itemTotal.slice(0, -2) + '.' + itemTotal.slice(-2);
