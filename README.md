@@ -24,6 +24,7 @@ Try the application live at [https://wicked-sales.davidlyu.com](https://wicked-s
   - User can checkout out to shopping cart
   - User can view checkout
 ## Preview
+ ![](https://github.com/david-lyu/previewgif.gif)
 
 ## Development
 
