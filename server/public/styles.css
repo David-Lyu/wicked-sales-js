@@ -1,5 +1,8 @@
 .background {
-  background-image: url(/images/plantbackground.jpg);
+  background-image: url(./images/kiki-wang-TOc_JldXOX8-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   z-index: -1;
   position: fixed;
   top: 0;
