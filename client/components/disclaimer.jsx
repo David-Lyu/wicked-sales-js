@@ -17,14 +17,11 @@ export default class Disclaimer extends React.Component {
   render() {
 
     return (
-      <div className="modal" style={{ display: this.state.showModal }}>
+      <div className="modal custom-modal" style={{ display: this.state.showModal }}>
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h3 className="modal-title" id="exampleModalLongTitle">Disclaimer</h3>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
             </div>
             <div className="modal-body">
               <p>
@@ -35,8 +32,8 @@ export default class Disclaimer extends React.Component {
             </div>
 
             <div className="modal-footer">
-              <form onSubmit={this.handleAcknowledgeClick} >
-                <label>
+              <form className="d-flex justify-content-between w-100" onSubmit={this.handleAcknowledgeClick} >
+                <label className="d-flex justify-content-around align-items-center pointer">
                   I acknowlege
                   <input type="checkbox" required/>
                 </label>

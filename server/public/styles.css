@@ -1,26 +1,4 @@
 
-  @media (max-width: 576px) {
-    header > h1 {
-      max-width: 80%;
-    }
-    header {
-      justify-content: flex-end;
-    }
-  }
-
-
-  @media (max-width: 1000px) {
-    .card {
-      max-width:100%;
-      flex: 100%  }
-  }
-
-  @media (min-width:1000px) {
-    img{
-      object-fit: contain;
-      height: 60%
-    }
-  }
 
   header {
     margin-bottom: 20px;
@@ -28,6 +6,21 @@
   header i {
     margin-right: 10px;
     margin-left: 10px
+  }
+
+  .custom-modal {
+    background-color: rgba(17, 17, 17, 0.5);
+    z-index: 2;
+  }
+
+  .custom-modal * {
+    z-index: 3;
+  }
+
+  .custom-modal label {
+    border: 1px solid red;
+    border-radius: 15px;
+    width: 33%;
   }
 
 .card {
@@ -41,4 +34,32 @@
 .on-hover {
   border: 1px blue solid;
   color: blue;
+}
+
+@media (max-width: 576px) {
+  header > h1 {
+    max-width: 80%;
+  }
+  header {
+    justify-content: flex-end;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .custom-modal label {
+    width: 50%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .card {
+    max-width:100%;
+    flex: 100%  }
+}
+
+@media (min-width:1000px) {
+  img{
+    object-fit: contain;
+    height: 60%
+  }
 }
