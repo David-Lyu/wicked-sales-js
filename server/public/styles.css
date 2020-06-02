@@ -70,7 +70,7 @@ header i {
     z-index: 1;
   }
 
-  .card:first-child {
+  .mobile > :first-child{
     margin-top: 200px;
   }
 }

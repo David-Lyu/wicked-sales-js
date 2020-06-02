@@ -30,7 +30,7 @@ export default class ProductDetails extends React.Component {
     if (product) {
       const price = product.price.toString();
       return (
-        <div>
+        <div className="bg-white mobile p-3">
           <nav className="nav nav-tabs">
             <button className="nav-item nav-link text-muted" onClick={this.handleClickDetails}> {'< back to catalog'}</button>
           </nav>
