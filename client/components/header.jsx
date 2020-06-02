@@ -3,9 +3,9 @@ import React from 'react';
 export default function Header(props) {
   return (
     <header className="row d-flex align-items-center bg-dark text-white">
-      <div className="d-flex justify-content-center">
-        <i className="fas fa-leaf text-success">
-          <i className="fas fa-lightbulb h2 offset-sm-1 text-warning"></i>
+      <div className="d-flex justify-content-center col-sm-1 offset-sm-1">
+        <i className="fas fa-lightbulb h2 logo text-warning">
+          <i className="fas fa-leaf text-success"></i>
         </i>
       </div>
       <h1 className="col-sm-7">Lamp and Plant Store</h1>
