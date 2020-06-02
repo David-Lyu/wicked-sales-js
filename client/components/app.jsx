@@ -4,7 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
-import Disclaimer from './disclaimer';
+// import Disclaimer from './disclaimer';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -84,7 +84,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <Disclaimer/>
+        {/* <Disclaimer/> */}
         <Header setView={this.setView} cartItemCount={this.state.cart.length}/>
         { (this.state.view.name === 'catalog' && <ProductList setView={this.setView}/>) ||
         (this.state.view.name === 'details' && <ProductDetails setView={this.setView}
