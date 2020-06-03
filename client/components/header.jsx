@@ -8,7 +8,7 @@ export default function Header(props) {
           <i className="fas fa-leaf text-success"></i>
         </i>
       </div>
-      <h1 className="col-sm-7">Lamp and Plant Store</h1>
+      <h1 className="col-sm-7">Plant and Lamp Store</h1>
       <div onClick={() => { props.setView('cart', {}); }} className="d-flex align-items-center offset-sm-1 col-sm-2 justify-content-center pointer">
         <h6>{props.cartItemCount + ' items'}</h6>
         <i className="fas fa-shopping-cart h3"></i>
