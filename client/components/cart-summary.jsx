@@ -11,8 +11,8 @@ export default function CartSummary(props) {
     itemTotal = itemTotal.toString();
     itemTotal = '$' + itemTotal.slice(0, -2) + '.' + itemTotal.slice(-2);
     return (
-      <div className="bg-white mobile p-3">
-        <nav className="nav nav-tabs">
+      <div className="mobile p-3">
+        <nav className="nav">
           <button className="nav-item nav-link text-muted" onClick={() => { props.setView('catalog', {}); }}>
             {'< back to catalog'}
           </button>
@@ -33,7 +33,7 @@ export default function CartSummary(props) {
             {'< back to catalog'}
           </button>
         </nav>
-        <div>Cart is Empty</div>
+        <div className="bg-white">Cart is Empty</div>
       </>
     );
   }

@@ -64,15 +64,26 @@ header i {
 
 @media (max-width: 576px) {
   header > h1 {
-    max-width: 80%;
+    max-width: 100%;
+    text-align: center;
   }
+
   header {
     justify-content: flex-end;
     position: fixed;
     z-index: 1;
   }
+
+  header div:first-child {
+    margin-top: 5px;;
+  }
+
+  header h1 {
+    font-size: 15px;
+  }
+
   .mobile > :first-child{
-    margin-top: 200px;
+    margin-top: 150px;
   }
 }
 
