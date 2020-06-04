@@ -28,12 +28,12 @@ export default function CartSummary(props) {
   } else {
     return (
       <>
-        <nav className="nav p-3">
+        <nav className="nav nav-tabs bg-white p-3">
           <button className="nav-item nav-link text-muted" onClick={() => { props.setView('catalog', {}); }}>
             {'< back to catalog'}
           </button>
         </nav>
-        <div className="bg-white">Cart is Empty</div>
+        <h1 className="bg-white text-center py-3">Cart is Empty</h1>
       </>
     );
   }
