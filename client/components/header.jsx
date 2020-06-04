@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Header(props) {
   return (
-    <header className="row d-flex align-items-center bg-dark text-white w-100">
+    <header className="row d-flex align-items-center bg-dark text-white">
       <div className="d-flex justify-content-center col-sm-1 offset-sm-1">
         <i className="fas fa-lightbulb h2 logo text-warning pointer" onClick={() => props.setView('catalog')}>
           <i className="fas fa-leaf text-success"></i>
