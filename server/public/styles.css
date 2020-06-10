@@ -1,6 +1,7 @@
 .background {
   background-image: url(./images/kiki-wang-TOc_JldXOX8-unsplash.jpg);
   background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
   z-index: -1;
   position: fixed;
@@ -55,6 +56,7 @@ header i {
   color: blue;
   background-color: yellowgreen;
 }
+
 
 @media screen and (max-width: 500px) {
   .custom-modal label {

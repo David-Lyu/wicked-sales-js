@@ -153,6 +153,19 @@ app.post('/api/cart', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.delete('/api/cart/:cartItemId', (req, res, next) => {
+  const cartItemId = req.params.cartItemId;
+  if (!cartItemId) return res.status(404).json({ error: 'cartItemId not found' });
+  const sql = `
+  delete from "cartItems"
+  where "cartItemId" = $1
+  returning *
+  `;
+  db.query(sql, [cartItemId])
+    .then(data => res.status(201).json(data.rows))
+    .catch(err => next(err));
+});
+
 app.post('/api/orders', (req, res, next) => {
   if (req.session.cartId) {
     const bodyData = req.body;

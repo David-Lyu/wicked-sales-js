@@ -6,14 +6,14 @@ export default function CartSummary(props) {
     let itemTotal = 0;
     const getAllCartItems = props.cart.map(cartItem => {
       itemTotal += parseInt(cartItem.price);
-      return <CartSummaryItem key={cartItem.cartItemId} cartItem={cartItem}/>;
+      return <CartSummaryItem key={cartItem.cartItemId} deleteCartItem={props.deleteCartItem} cartItem={cartItem}/>;
     });
     itemTotal = itemTotal.toString();
     itemTotal = '$' + itemTotal.slice(0, -2) + '.' + itemTotal.slice(-2);
     return (
       <div className="mobile bg-white p-3">
         <nav className="nav nav-tabs">
-          <button className="nav-item nav-link text-muted" onClick={() => { props.setView('catalog', {}); }}>
+          <button className="nav-item nav-link text-white bg-success" onClick={() => { props.setView('catalog', {}); }}>
             {'< back to catalog'}
           </button>
         </nav>

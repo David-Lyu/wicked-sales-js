@@ -32,7 +32,7 @@ export default class ProductDetails extends React.Component {
       return (
         <div className="bg-white mobile p-3">
           <nav className="nav nav-tabs">
-            <button className="nav-item nav-link text-muted" onClick={this.handleClickDetails}> {'< back to catalog'}</button>
+            <button className="nav-item nav-link text-white bg-success" onClick={this.handleClickDetails}> {'< back to catalog'}</button>
           </nav>
 
           <div className="card mb-3">
