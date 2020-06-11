@@ -29,7 +29,7 @@ export default function CartSummary(props) {
     return (
       <>
         <nav className="nav nav-tabs bg-white p-3">
-          <button className="nav-item nav-link text-muted" onClick={() => { props.setView('catalog', {}); }}>
+          <button className="nav-item nav-link text-white bg-success" onClick={() => { props.setView('catalog', {}); }}>
             {'< back to catalog'}
           </button>
         </nav>

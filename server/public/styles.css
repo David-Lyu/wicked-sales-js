@@ -57,6 +57,10 @@ header i {
   background-color: yellowgreen;
 }
 
+footer a {
+  background-color: rgba(17, 17, 17, 0.3);
+}
+
 
 @media screen and (max-width: 500px) {
   .custom-modal label {
