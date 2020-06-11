@@ -34,7 +34,7 @@ export default class Disclaimer extends React.Component {
             <div className="modal-footer">
               <form className="d-flex justify-content-between w-100" onSubmit={this.handleAcknowledgeClick} >
                 <label className="d-flex justify-content-around align-items-center pointer">
-                  I acknowlege
+                  I acknowledge
                   <input type="checkbox" required/>
                 </label>
                 <button>Close</button>
