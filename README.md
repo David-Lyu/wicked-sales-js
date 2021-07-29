@@ -1,7 +1,7 @@
 # wicked-sales-js
 A full stack Node.js and React shopping cart app
 ## Live Demo
-Try the application live at [https://wicked-sales.davidlyu.com](https://wicked-sales.davidlyu.com/)
+Try the application live at [https://lamp-lights-store.netlify.app/](https://wicked-sales.davidlyu.com/)
 
 ## Technologies Used:
 * babel
